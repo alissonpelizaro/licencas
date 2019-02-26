@@ -24,7 +24,6 @@ class Login extends CI_Controller {
 
 			$usr = $this->login_model->checkLogin($usr, $pass);
 
-
 			if($usr){
 
 				$this->session->set_userdata('id', $usr->idUser);
@@ -35,22 +34,14 @@ class Login extends CI_Controller {
 				redirect('../inicio');
 
 			} else {
-
 				$this->load->view('login', array('invalidUser' => true));
-
 			}
+			
 		}
 
 		public function logout(){
-				$this->load->library('log_lib');
 				$this->load->model('login_model');
-
-				$this->log_lib->setAcao('Saiu do sistema');
-				$this->log_lib->setFerramenta('MyOmni');
-				$this->log_lib->gravaLog();
-
 				$this->login_model->deslogar($this->session->userdata('id'));
-
 				$this->session->sess_destroy();
 
 				redirect('../');

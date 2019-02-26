@@ -10,7 +10,7 @@ class Login_model extends My_model {
 
 	public function checkLogin($user, $pass){
 	 	$ret = $this->db->get_where('user', [
-			'usuario' => $user,
+			'login' => $user,
 			'senha' => $pass
 		]);
 

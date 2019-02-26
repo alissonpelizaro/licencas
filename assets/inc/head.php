@@ -16,7 +16,6 @@
   <link href="<?php echo base_url(); ?>assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="<?php echo base_url(); ?>assets/css/argon.css?v=1.0.0" rel="stylesheet">
-</head>
+  <link type="text/css" href="<?php echo base_url(); ?>assets/css/mystyle.css" rel="stylesheet">
 
-<body class="bg-default">
-  <div class="main-content ">
+</head>
