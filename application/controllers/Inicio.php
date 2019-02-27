@@ -19,9 +19,18 @@ class Inicio extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()	{
+		if(!$this->session->userdata('id')){
+			redirect('../');
+		}
 
+		$dados = array(
+			'page' => (object) array(
+				'name' => 'Dashboard',
+				'dir' => 'inicio'
+			)
+		);
 
-		$this->load->view('inicio');
+		$this->load->view('inicio', $dados);
 	}
 
 }

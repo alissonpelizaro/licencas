@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 
 		public function index(){
 
-			$this->session->sess_destroy();
+			//$this->session->sess_destroy();
 			if($this->session->userdata('id')){
 				redirect('../inicio');
 			} else {
@@ -36,12 +36,10 @@ class Login extends CI_Controller {
 			} else {
 				$this->load->view('login', array('invalidUser' => true));
 			}
-			
+
 		}
 
 		public function logout(){
-				$this->load->model('login_model');
-				$this->login_model->deslogar($this->session->userdata('id'));
 				$this->session->sess_destroy();
 
 				redirect('../');

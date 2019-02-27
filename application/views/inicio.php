@@ -114,7 +114,7 @@ include 'assets/inc/head.php';
                   <h3 class="mb-0">Clientes</h3>
                 </div>
                 <div class="col text-right">
-                  <a href="#!" class="btn btn-sm btn-primary">Ver todos</a>
+                  <a href="clientes" class="btn btn-sm btn-primary">Ver todos</a>
                 </div>
               </div>
             </div>
@@ -247,15 +247,7 @@ include 'assets/inc/head.php';
       </footer>
     </div>
   </div>
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Optional JS -->
-  <script src="./assets/vendor/chart.js/dist/Chart.min.js"></script>
-  <script src="./assets/vendor/chart.js/dist/Chart.extension.js"></script>
-  <!-- Argon JS -->
-  <script src="./assets/js/argon.js?v=1.0.0"></script>
+<?php include 'assets/inc/scripts.php'; ?>
 </body>
 
 </html>

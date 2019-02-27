@@ -7,7 +7,7 @@
     </button>
     <!-- Brand -->
     <a class="navbar-brand pt-0" href="<?php echo base_url(); ?>inicio">
-      <img src="./assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+      <img src="<?php echo base_url(); ?>assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -15,7 +15,7 @@
         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="./assets/img/theme/default.jpg">
+              <img alt="Image placeholder" src="<?php echo base_url() ?>assets/img/theme/default.jpg">
             </span>
           </div>
         </a>
@@ -50,7 +50,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a href="<?php echo base_url(); ?>inicio">
-              <img src="./assets/img/brand/blue.png">
+              <img src="<?php echo base_url(); ?>assets/img/brand/blue.png">
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -86,12 +86,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#!">
-            <i class="fas fa-key text-orange"></i>Acessos
+            <i class="fas fa-key text-orange"></i> Acessos
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#!">
-            <i class="ni ni-bullet-list-67 text-red"></i> Relatórios
+            <i class="far fa-list-alt text-red"></i> Relatórios
           </a>
         </li>
       </ul>

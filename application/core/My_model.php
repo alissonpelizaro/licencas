@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Instruções default do MyOmni
- */
+* Instruções default do MyOmni
+*/
 class My_model extends CI_model{
 
   private $tabela;
@@ -39,12 +39,10 @@ class My_model extends CI_model{
     $sql = "SELECT $ret FROM `".$this->tabela."`";
     if($intruct){
       $sql .= " WHERE ".$intruct;
-    } else {
-      if($filtro){
-        $instruc = $this->getInstrucao($filtro);
-        if($instruc){
-          $sql .= " WHERE ".$instruc;
-        }
+    } else if($filtro){
+      $instruc = $this->getInstrucao($filtro);
+      if($instruc){
+        $sql .= " WHERE ".$instruc;
       }
     }
 
@@ -77,4 +75,4 @@ class My_model extends CI_model{
 
 }
 
- ?>
+?>

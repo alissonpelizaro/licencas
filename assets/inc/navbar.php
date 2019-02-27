@@ -24,7 +24,7 @@
         <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="media align-items-center">
             <span class="avatar avatar-sm rounded-circle">
-              <img alt="Image placeholder" src="./assets/img/theme/default.jpg">
+              <img alt="Image placeholder" src="<?php echo base_url() ?>assets/img/theme/default.jpg">
             </span>
             <div class="media-body ml-2 d-none d-lg-block">
               <span class="mb-0 text-sm  font-weight-bold">Administrador</span>
@@ -48,7 +48,7 @@
             <span>Ajuda</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <a href="login/logout" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Sair</span>
           </a>
