@@ -21,7 +21,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
           <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Olá, Fulano!</h6>
+            <h6 class="text-overflow m-0">Olá, Administrador!</h6>
           </div>
           <a href="#!" class="dropdown-item">
             <i class="ni ni-single-02"></i>
@@ -36,7 +36,7 @@
             <span>Suporte</span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#!" class="dropdown-item">
+          <a href="<?php echo base_url() ?>login/logout" class="dropdown-item">
             <i class="ni ni-user-run"></i>
             <span>Sair</span>
           </a>

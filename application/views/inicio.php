@@ -21,7 +21,7 @@ include 'assets/inc/head.php';
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Instâncias</h5>
-                      <span class="h2 font-weight-bold mb-0">9</span>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $instancias ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -42,7 +42,7 @@ include 'assets/inc/head.php';
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Usuários</h5>
-                      <span class="h2 font-weight-bold mb-0">2.325</span>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $usuarios ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -63,7 +63,7 @@ include 'assets/inc/head.php';
                   <div class="row">
                     <div class="col">
                       <h5 class="card-title text-uppercase text-muted mb-0">Atendimentos</h5>
-                      <span class="h2 font-weight-bold mb-0">29.324</span>
+                      <span class="h2 font-weight-bold mb-0"><?php echo $atendimentos ?></span>
                     </div>
                     <div class="col-auto">
                       <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -73,7 +73,7 @@ include 'assets/inc/head.php';
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                    <span class="text-nowrap">Since yesterday</span>
+                    <span class="text-nowrap">(7 dias)</span>
                   </p>
                 </div>
               </div>
@@ -94,7 +94,7 @@ include 'assets/inc/head.php';
                   </div>
                   <p class="mt-3 mb-0 text-muted text-sm">
                     <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                    <span class="text-nowrap">Since last month</span>
+                    <span class="text-nowrap">(30 dias)</span>
                   </p>
                 </div>
               </div>
@@ -119,89 +119,58 @@ include 'assets/inc/head.php';
               </div>
             </div>
             <div class="table-responsive">
-              <!-- Projects table -->
-              <table class="table align-items-center table-flush">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Licenças contratadas</th>
-                    <th scope="col">Licenças utilizadas</th>
-                    <th scope="col">%</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">
-                      /argon/
-                    </th>
-                    <td>
-                      4,569
-                    </td>
-                    <td>
-                      340
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/index.html
-                    </th>
-                    <td>
-                      3,985
-                    </td>
-                    <td>
-                      319
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/charts.html
-                    </th>
-                    <td>
-                      3,513
-                    </td>
-                    <td>
-                      294
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/tables.html
-                    </th>
-                    <td>
-                      2,050
-                    </td>
-                    <td>
-                      147
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">
-                      /argon/profile.html
-                    </th>
-                    <td>
-                      1,795
-                    </td>
-                    <td>
-                      190
-                    </td>
-                    <td>
-                      <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <?php if($clientes){
+                ?>
+                <!-- Projects table -->
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Responsável</th>
+                      <th class="text-center" scope="col">Último sincronismo</th>
+                      <th class="text-center" scope="col" style="width: 10px;">Licenças contratadas</th>
+                      <th class="text-center" scope="col" style="width: 10px;">Licenças utilizadas</th>
+                      <th class="text-center" scope="col" style="width: 10px;">%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php  foreach ($clientes as $cliente) {
+                      $lc = $cliente->cd + $cliente->sd +$cliente->ad;
+                      $lu = $cliente->cu + $cliente->su +$cliente->au;
+                      $por = ($lu * 100)/$lc;
+                      if($por > 100){
+                        $iconColor = "danger";
+                      } else if($por > 90){
+                        $iconColor = "warning";
+                      } else {
+                        $iconColor = "success";
+                      }
+                      ?>
+                      <tr>
+                        <th scope="row"><?php echo $cliente->fantasia ?></th>
+                        <th scope="row"><?php echo $cliente->responsavel ?></th>
+                        <td class="text-center"><?php echo $cliente->dataSincronismo ? dataBdParaHtml($cliente->dataSincronismo) : "Nunca"; ?></td>
+                        <td class="text-center"><?php echo $lc; ?></td>
+                        <td class="text-center"><?php echo $lu; ?></td>
+                        <td>
+                          <i class="fas fa-chart-bar text-<?php echo $iconColor; ?> mr-3"></i> <?php echo number_format($por, 2) ?>%
+                        </td>
+                      </tr>
+                      <?php
+                    }
+                    ?>
+
+                  </tbody>
+                </table>
+                <?php
+              }  else {
+                ?>
+                <tr>
+                  <p class="text-center text-muted">Nenhum cliente cadastrado</p>
+
+                </tr>
+                <?php
+              }  ?>
             </div>
           </div>
         </div>

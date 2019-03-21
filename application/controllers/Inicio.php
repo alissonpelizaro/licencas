@@ -23,7 +23,21 @@ class Inicio extends CI_Controller {
 			redirect('../');
 		}
 
+		$this->load->model('cliente_model');
+		$clientes = $this->cliente_model->getClientes(array('status' => 1));
+
+		$usuarios = 0;
+		$atendimentos = 0;
+		foreach ($clientes as $cliente) {
+			$usuarios = $usuarios + $cliente->au + $cliente->su + $cliente->cu;
+			$atendimentos = $atendimentos + $cliente->ats;
+		}
+
 		$dados = array(
+			'clientes' => $clientes,
+			'usuarios' => $usuarios,
+			'atendimentos' => $atendimentos,
+			'instancias' => count($clientes),
 			'page' => (object) array(
 				'name' => 'Dashboard',
 				'dir' => 'inicio'
